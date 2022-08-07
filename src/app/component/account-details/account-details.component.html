@@ -1,0 +1,43 @@
+<ng-container *ngIf="activeAccount$ | async as account">
+  <div class="text-2xl text-center font-black mb-4">Account Details</div>
+  <div class="flex flex-col items-start justify-items-start w-full">
+    <ng-content *ngTemplateOutlet="account_detail; context: {
+        title: 'Name',
+        value: account.name}"></ng-content>
+    <ng-content *ngTemplateOutlet="account_detail; context: {
+        title: 'Surname',
+        value: account.surname}"></ng-content>
+    <ng-content *ngTemplateOutlet="account_detail; context: {
+        title: 'Gender',
+        value: account.gender}"></ng-content>
+    <ng-content *ngTemplateOutlet="account_detail; context: {
+        title: 'Personal Number',
+        value: account.personal_number}"></ng-content>
+    <ng-content *ngTemplateOutlet="account_detail; context: {
+        title: 'Phone',
+        value: account.phone}"></ng-content>
+    <ng-content *ngTemplateOutlet="account_detail; context: {
+        title: 'Business address',
+        value: account.business_address}"></ng-content>
+    <ng-content *ngTemplateOutlet="account_detail; context: {
+        title: 'Country',
+        value: account.country}"></ng-content>
+    <ng-content *ngTemplateOutlet="account_detail; context: {
+        title: 'City',
+        value: account.city}"></ng-content>
+    <ng-content *ngTemplateOutlet="account_detail; context: {
+        title: 'Home Address',
+        value: account.address}"></ng-content>
+  </div>
+  <div class="flex text-sm w-full space-x-4">
+    <button (click)="editAccountDetails(account)" class="mt-6 py-2 bg-gray-50 px-6 rounded w-1/2 text-white-50">Edit details</button>
+    <button (click)="hideAccountDetails()" class="mt-6 py-2 bg-lightGray-50 px-6 rounded w-1/2 text-gray-50">Hide details</button>
+  </div>
+</ng-container>
+
+<ng-template #account_detail let-title="title" let-value="value">
+  <p class="font-medium text-xl">
+    <span class="text-gray-50 mr-2">{{title}}:</span>
+    <span class="text-black-50">{{value}}</span>
+  </p>
+</ng-template>

@@ -1,0 +1,9 @@
+<label>
+  <span *ngIf="label" class="absolute -top-1 left-0 text-xs text-gray-50">{{label}}</span>
+  <div class="w-full flex items-center">
+    <ng-content></ng-content>
+  </div>
+</label>
+<div class="absolute -bottom-1 text-xs text-red-50" *ngIf="error">
+  Field invalid
+</div>

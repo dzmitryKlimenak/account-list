@@ -1,0 +1,83 @@
+<button class="absolute top-3 right-4 text-lightGray-50">
+  <mat-icon (click)="close()" aria-hidden="false" fontIcon="close"></mat-icon>
+</button>
+<form [formGroup]="form" (ngSubmit)="submit()" class="flex flex-col space-y-3 overflow-y-scroll h-full relative">
+  <app-form-field [label]="ACCOUNT_FORM.name.label"
+                  [error]="checkFormControl(ACCOUNT_FIELDS.NAME)">
+    <input
+      [placeholder]="ACCOUNT_FORM.name.placeholder"
+      type="text"
+      [formControlName]="ACCOUNT_FIELDS.NAME"
+    />
+  </app-form-field>
+  <app-form-field [label]="ACCOUNT_FORM.surname.label"
+                  [error]="checkFormControl(ACCOUNT_FIELDS.SURNAME)">
+    <input
+      [placeholder]="ACCOUNT_FORM.surname.placeholder"
+      type="text"
+      [formControlName]="ACCOUNT_FIELDS.SURNAME"
+    />
+  </app-form-field>
+  <div class="flex items-center space-x-4 pb-4">
+    <div class="text-xs text-gray-50">{{ACCOUNT_FORM.gender.label}}:</div>
+    <ng-container  *ngFor="let gender of ACCOUNT_FORM.gender.genders">
+      <app-form-field class="py-0">
+        <input
+          type="radio"
+          [value]="gender.type"
+          [formControlName]="ACCOUNT_FIELDS.GENDER"
+        />
+        <span class="ml-2 text-xs text-gray-50">{{gender.text}}</span>
+      </app-form-field>
+    </ng-container>
+  </div>
+  <app-form-field [label]="ACCOUNT_FORM.personal_number.label"
+                  [error]="checkFormControl(ACCOUNT_FIELDS.PERSONAL_NUMBER)">
+    <input
+      [placeholder]="ACCOUNT_FORM.personal_number.placeholder"
+      type="text"
+      [formControlName]="ACCOUNT_FIELDS.PERSONAL_NUMBER"
+    />
+  </app-form-field>
+  <app-form-field [label]="ACCOUNT_FORM.phone.label"
+                  [error]="checkFormControl(ACCOUNT_FIELDS.PHONE)">
+    <input
+      [placeholder]="ACCOUNT_FORM.phone.placeholder"
+      type="text"
+      [formControlName]="ACCOUNT_FIELDS.PHONE"
+    />
+  </app-form-field>
+  <app-form-field [label]="ACCOUNT_FORM.business_address.label"
+                  [error]="checkFormControl(ACCOUNT_FIELDS.BUSINESS_ADDRESS)">
+    <input
+      [placeholder]="ACCOUNT_FORM.business_address.placeholder"
+      type="text"
+      [formControlName]="ACCOUNT_FIELDS.BUSINESS_ADDRESS"
+    />
+  </app-form-field>
+  <app-form-field [label]="ACCOUNT_FORM.country.label"
+                  [error]="checkFormControl(ACCOUNT_FIELDS.COUNTRY)">
+    <input
+      [placeholder]="ACCOUNT_FORM.country.placeholder"
+      type="text"
+      [formControlName]="ACCOUNT_FIELDS.COUNTRY"
+    />
+  </app-form-field>
+  <app-form-field [label]="ACCOUNT_FORM.city.label"
+                  [error]="checkFormControl(ACCOUNT_FIELDS.CITY)">
+    <input
+      [placeholder]="ACCOUNT_FORM.city.placeholder"
+      type="text"
+      [formControlName]="ACCOUNT_FIELDS.CITY"
+    />
+  </app-form-field>
+  <app-form-field [label]="ACCOUNT_FORM.address.label"
+                  [error]="checkFormControl(ACCOUNT_FIELDS.ADDRESS)">
+    <input
+      [placeholder]="ACCOUNT_FORM.address.placeholder"
+      type="text"
+      [formControlName]="ACCOUNT_FIELDS.ADDRESS"
+    />
+  </app-form-field>
+  <button [disabled]="this.form.invalid" type="submit" class="py-2 px-6 rounded border bg-success mt-10 sticky bottom-0">Save</button>
+</form>
